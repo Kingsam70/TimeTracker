@@ -48,7 +48,7 @@ def play_sound():
 
     # Do change the below path for your sound file It'll only work for me.
     try:
-        playsound.playsound("C:/Users/ASUS/Downloads/clock_alarm.mp3")
+        playsound.playsound("./clock_alarm.mp3")
     except:
         print("If you do not want the system to play any sound, you can leave the sound path empty or provide a path to a sound file.")
 
