@@ -38,8 +38,13 @@ Customization
 You can customize the appearance of the GUI by modifying the following variables in the code:
 
 BG_COLOR: Background color of the GUI.
+
 BUTTON_COLOR: Background color of the buttons.
+
 FG_TIMER_TEXT: Text color of the timer display.
+
 FG_BUTTON_TEXT: Text color of the buttons.
+
 LABEL_TEXT_COLOR: Text color of the timer label.
+
 # Provide your mp3 desired sound if you want to play it on completion of the timer
