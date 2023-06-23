@@ -48,7 +48,7 @@ def play_sound():
 
     # Do change the below path for your sound file It'll only work for me.
     try:
-        playsound.playsound("./clock_alarm.mp3")
+        playsound.playsound("mp3 path")  # Give appropriate path of any mp3 you want to play when the timer ends if you want sound 
     except:
         print("If you do not want the system to play any sound, you can leave the sound path empty or provide a path to a sound file.")
 
