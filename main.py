@@ -21,6 +21,8 @@ def start_timer():
     """starts the clock as per timer and when the timer is over plays a sound."""
     global timer, timer_duration
 
+    start_button.config(state="disabled")  # Disabling the button in order to prevent spamming
+
     hour = int(timer_duration / 3600)
     minute = int((timer_duration % 3600) / 60)
     second = int((timer_duration % 3600) % 60)
@@ -37,6 +39,7 @@ def start_timer():
 
     if timer_duration == 0:  # Quitting function if timer is over
         threading.Thread(target=play_sound).start()
+        start_button.config(state="active")
         return
 
     timer_duration -= 1
@@ -48,7 +51,7 @@ def play_sound():
 
     # Do change the below path for your sound file It'll only work for me.
     try:
-        playsound.playsound("mp3 path")  # Give appropriate path of any mp3 you want to play when the timer ends if you want sound 
+        playsound.playsound("C:/Users/ASUS/Downloads/clock_alarm.mp3")
     except:
         print("If you do not want the system to play any sound, you can leave the sound path empty or provide a path to a sound file.")
 
@@ -71,6 +74,7 @@ def reset_timer():
         window.after_cancel(timer)
     canvas.itemconfig(canvas_text, text="00:00:00")
     timer_duration = user_defined_time
+    start_button.config(state="active")  # Disabling the button in order to prevent spamming
 
 
 def add_time():
@@ -79,10 +83,13 @@ def add_time():
 
     try:
         user_defined_time = int(time_entry.get())
+        if user_defined_time > 86400:
+            messagebox.showwarning("Too large number", message="Greater than 24 hours.")
+            return
         timer_duration = user_defined_time
     except ValueError:
-        messagebox.showwarning(message="Does not support floating point values.")
-        print("Only woks with seconds not with milliseconds, So please dont give float value.")
+        messagebox.showwarning("Float error", message="Does not support floating point values.")
+        print("Only woks with seconds not with milliseconds, So please dont provide float value.")
 
 
 window = Tk()
@@ -127,5 +134,3 @@ timer_label.grid(column=1, row=0)
 
 
 window.mainloop()
-
-
